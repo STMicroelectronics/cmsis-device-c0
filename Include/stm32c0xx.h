@@ -193,6 +193,9 @@ typedef enum
   * @}
   */
 
+/* Aliases for IRQn_Type */
+#define SVC_IRQn              SVCall_IRQn
+
 #if defined (USE_HAL_DRIVER)
  #include "stm32c0xx_hal.h"
 #endif /* USE_HAL_DRIVER */
