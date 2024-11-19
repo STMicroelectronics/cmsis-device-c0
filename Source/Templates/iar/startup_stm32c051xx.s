@@ -1,7 +1,7 @@
 ;******************************************************************************
-;* File Name          : startup_stm32c071xx.s
+;* File Name          : startup_stm32c051xx.s
 ;* Author             : MCD Application Team
-;* Description        : STM32C071xx devices vector table for EWARM toolchain.
+;* Description        : STM32C051xx devices vector table for EWARM toolchain.
 ;*                      This module performs:
 ;*                      - Set the initial SP
 ;*                      - Set the initial PC == __iar_program_start,
@@ -71,14 +71,14 @@ __vector_table
 
         ; External Interrupts
         DCD     WWDG_IRQHandler                ; Window Watchdog
-        DCD     PVD_VDDIO2_IRQHandler          ; PVD through EXTI Line detect
+        DCD     0                              ; Reserved
         DCD     RTC_IRQHandler                 ; RTC through EXTI Line
         DCD     FLASH_IRQHandler               ; FLASH
-        DCD     RCC_CRS_IRQHandler             ; RCC, CRS
+        DCD     RCC_IRQHandler                 ; RCC
         DCD     EXTI0_1_IRQHandler             ; EXTI Line 0 and 1
         DCD     EXTI2_3_IRQHandler             ; EXTI Line 2 and 3
         DCD     EXTI4_15_IRQHandler            ; EXTI Line 4 to 15
-        DCD     USB_DRD_FS_IRQHandler          ; USB Dual Role
+        DCD     0                              ; Reserved
         DCD     DMA1_Channel1_IRQHandler       ; DMA1 Channel 1
         DCD     DMA1_Channel2_3_IRQHandler     ; DMA1 Channel 2 and Channel 3
         DCD     DMAMUX1_DMA1_CH4_5_IRQHandler  ; DMAMUX, DMA1 Channel 4 and 5
@@ -145,12 +145,7 @@ SysTick_Handler
         PUBWEAK WWDG_IRQHandler
         SECTION .text:CODE:NOROOT:REORDER(1)
 WWDG_IRQHandler
-        B WWDG_IRQHandler
-		
-        PUBWEAK PVD_VDDIO2_IRQHandler
-        SECTION .text:CODE:NOROOT:REORDER(1)
-PVD_VDDIO2_IRQHandler
-        B PVD_VDDIO2_IRQHandler		
+        B WWDG_IRQHandler	
 
         PUBWEAK RTC_IRQHandler
         SECTION .text:CODE:NOROOT:REORDER(1)
@@ -162,10 +157,10 @@ RTC_IRQHandler
 FLASH_IRQHandler
         B FLASH_IRQHandler
 
-        PUBWEAK RCC_CRS_IRQHandler
+        PUBWEAK RCC_IRQHandler
         SECTION .text:CODE:NOROOT:REORDER(1)
-RCC_CRS_IRQHandler
-        B RCC_CRS_IRQHandler
+RCC_IRQHandler
+        B RCC_IRQHandler
 
         PUBWEAK EXTI0_1_IRQHandler
         SECTION .text:CODE:NOROOT:REORDER(1)
@@ -181,11 +176,6 @@ EXTI2_3_IRQHandler
         SECTION .text:CODE:NOROOT:REORDER(1)
 EXTI4_15_IRQHandler
         B EXTI4_15_IRQHandler
-
-        PUBWEAK USB_DRD_FS_IRQHandler
-        SECTION .text:CODE:NOROOT:REORDER(1)
-USB_DRD_FS_IRQHandler
-        B USB_DRD_FS_IRQHandler
 
         PUBWEAK DMA1_Channel1_IRQHandler
         SECTION .text:CODE:NOROOT:REORDER(1)

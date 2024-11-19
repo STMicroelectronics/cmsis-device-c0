@@ -1,7 +1,7 @@
 ;******************************************************************************
-;* File Name          : startup_stm32c071xx.s
+;* File Name          : startup_stm32c091xx.s
 ;* Author             : MCD Application Team
-;* Description        : STM32C071xx devices vector table for EWARM toolchain.
+;* Description        : STM32C091xx devices vector table for EWARM toolchain.
 ;*                      This module performs:
 ;*                      - Set the initial SP
 ;*                      - Set the initial PC == __iar_program_start,
@@ -52,56 +52,56 @@
         DATA
 __vector_table
         DCD     sfe(CSTACK)
-        DCD     Reset_Handler                  ; Reset Handler
+        DCD     Reset_Handler                      ; Reset Handler
 
-        DCD     NMI_Handler                    ; NMI Handler
-        DCD     HardFault_Handler              ; Hard Fault Handler
-        DCD     0                              ; Reserved
-        DCD     0                              ; Reserved
-        DCD     0                              ; Reserved
-        DCD     0                              ; Reserved
-        DCD     0                              ; Reserved
-        DCD     0                              ; Reserved
-        DCD     0                              ; Reserved
-        DCD     SVC_Handler                    ; SVCall Handler
-        DCD     0                              ; Reserved
-        DCD     0                              ; Reserved
-        DCD     PendSV_Handler                 ; PendSV Handler
-        DCD     SysTick_Handler                ; SysTick Handler
+        DCD     NMI_Handler                        ; NMI Handler
+        DCD     HardFault_Handler                  ; Hard Fault Handler
+        DCD     0                                  ; Reserved
+        DCD     0                                  ; Reserved
+        DCD     0                                  ; Reserved
+        DCD     0                                  ; Reserved
+        DCD     0                                  ; Reserved
+        DCD     0                                  ; Reserved
+        DCD     0                                  ; Reserved
+        DCD     SVC_Handler                        ; SVCall Handler
+        DCD     0                                  ; Reserved
+        DCD     0                                  ; Reserved
+        DCD     PendSV_Handler                     ; PendSV Handler
+        DCD     SysTick_Handler                    ; SysTick Handler
 
         ; External Interrupts
-        DCD     WWDG_IRQHandler                ; Window Watchdog
-        DCD     PVD_VDDIO2_IRQHandler          ; PVD through EXTI Line detect
-        DCD     RTC_IRQHandler                 ; RTC through EXTI Line
-        DCD     FLASH_IRQHandler               ; FLASH
-        DCD     RCC_CRS_IRQHandler             ; RCC, CRS
-        DCD     EXTI0_1_IRQHandler             ; EXTI Line 0 and 1
-        DCD     EXTI2_3_IRQHandler             ; EXTI Line 2 and 3
-        DCD     EXTI4_15_IRQHandler            ; EXTI Line 4 to 15
-        DCD     USB_DRD_FS_IRQHandler          ; USB Dual Role
-        DCD     DMA1_Channel1_IRQHandler       ; DMA1 Channel 1
-        DCD     DMA1_Channel2_3_IRQHandler     ; DMA1 Channel 2 and Channel 3
-        DCD     DMAMUX1_DMA1_CH4_5_IRQHandler  ; DMAMUX, DMA1 Channel 4 and 5
-        DCD     ADC1_IRQHandler                ; ADC1
-        DCD     TIM1_BRK_UP_TRG_COM_IRQHandler ; TIM1 Break, Update, Trigger and Commutation
-        DCD     TIM1_CC_IRQHandler             ; TIM1 Capture Compare
-        DCD     TIM2_IRQHandler                ; TIM2
-        DCD     TIM3_IRQHandler                ; TIM3
-        DCD     0                              ; Reserved
-        DCD     0                              ; Reserved
-        DCD     TIM14_IRQHandler               ; TIM14
-        DCD     0                              ; Reserved
-        DCD     TIM16_IRQHandler               ; TIM16
-        DCD     TIM17_IRQHandler               ; TIM17
-        DCD     I2C1_IRQHandler                ; I2C1
-        DCD     I2C2_IRQHandler                ; I2C2
-        DCD     SPI1_IRQHandler                ; SPI1
-        DCD     SPI2_IRQHandler                ; SPI2
-        DCD     USART1_IRQHandler              ; USART1
-        DCD     USART2_IRQHandler              ; USART2
-        DCD     0                              ; Reserved
-        DCD     0                              ; Reserved
-        DCD     0                              ; Reserved
+        DCD     WWDG_IRQHandler                    ; Window Watchdog
+        DCD     0                                  ; Reserved
+        DCD     RTC_IRQHandler                     ; RTC through EXTI Line
+        DCD     FLASH_IRQHandler                   ; FLASH
+        DCD     RCC_IRQHandler                     ; RCC
+        DCD     EXTI0_1_IRQHandler                 ; EXTI Line 0 and 1
+        DCD     EXTI2_3_IRQHandler                 ; EXTI Line 2 and 3
+        DCD     EXTI4_15_IRQHandler                ; EXTI Line 4 to 15
+        DCD     0                                  ; Reserved
+        DCD     DMA1_Channel1_IRQHandler           ; DMA1 Channel 1
+        DCD     DMA1_Channel2_3_IRQHandler         ; DMA1 Channel 2 and Channel 3
+        DCD     DMAMUX1_DMA1_CH4_5_6_7_IRQHandler  ; DMAMUX, DMA1 Channel 4 to 7
+        DCD     ADC1_IRQHandler                    ; ADC1
+        DCD     TIM1_BRK_UP_TRG_COM_IRQHandler     ; TIM1 Break, Update, Trigger and Commutation
+        DCD     TIM1_CC_IRQHandler                 ; TIM1 Capture Compare
+        DCD     TIM2_IRQHandler                    ; TIM2
+        DCD     TIM3_IRQHandler                    ; TIM3
+        DCD     0                                  ; Reserved
+        DCD     0                                  ; Reserved
+        DCD     TIM14_IRQHandler                   ; TIM14
+        DCD     TIM15_IRQHandler                   ; TIM15
+        DCD     TIM16_IRQHandler                   ; TIM16
+        DCD     TIM17_IRQHandler                   ; TIM17
+        DCD     I2C1_IRQHandler                    ; I2C1
+        DCD     I2C2_IRQHandler                    ; I2C2
+        DCD     SPI1_IRQHandler                    ; SPI1
+        DCD     SPI2_IRQHandler                    ; SPI2
+        DCD     USART1_IRQHandler                  ; USART1
+        DCD     USART2_IRQHandler                  ; USART2
+        DCD     USART3_4_IRQHandler                ; USART3 and USART4
+        DCD     0                                  ; Reserved
+        DCD     0                                  ; Reserved
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;
@@ -145,12 +145,7 @@ SysTick_Handler
         PUBWEAK WWDG_IRQHandler
         SECTION .text:CODE:NOROOT:REORDER(1)
 WWDG_IRQHandler
-        B WWDG_IRQHandler
-		
-        PUBWEAK PVD_VDDIO2_IRQHandler
-        SECTION .text:CODE:NOROOT:REORDER(1)
-PVD_VDDIO2_IRQHandler
-        B PVD_VDDIO2_IRQHandler		
+        B WWDG_IRQHandler	
 
         PUBWEAK RTC_IRQHandler
         SECTION .text:CODE:NOROOT:REORDER(1)
@@ -162,10 +157,10 @@ RTC_IRQHandler
 FLASH_IRQHandler
         B FLASH_IRQHandler
 
-        PUBWEAK RCC_CRS_IRQHandler
+        PUBWEAK RCC_IRQHandler
         SECTION .text:CODE:NOROOT:REORDER(1)
-RCC_CRS_IRQHandler
-        B RCC_CRS_IRQHandler
+RCC_IRQHandler
+        B RCC_IRQHandler
 
         PUBWEAK EXTI0_1_IRQHandler
         SECTION .text:CODE:NOROOT:REORDER(1)
@@ -182,11 +177,6 @@ EXTI2_3_IRQHandler
 EXTI4_15_IRQHandler
         B EXTI4_15_IRQHandler
 
-        PUBWEAK USB_DRD_FS_IRQHandler
-        SECTION .text:CODE:NOROOT:REORDER(1)
-USB_DRD_FS_IRQHandler
-        B USB_DRD_FS_IRQHandler
-
         PUBWEAK DMA1_Channel1_IRQHandler
         SECTION .text:CODE:NOROOT:REORDER(1)
 DMA1_Channel1_IRQHandler
@@ -197,10 +187,10 @@ DMA1_Channel1_IRQHandler
 DMA1_Channel2_3_IRQHandler
         B DMA1_Channel2_3_IRQHandler
 
-        PUBWEAK DMAMUX1_DMA1_CH4_5_IRQHandler
+        PUBWEAK DMAMUX1_DMA1_CH4_5_6_7_IRQHandler
         SECTION .text:CODE:NOROOT:REORDER(1)
-DMAMUX1_DMA1_CH4_5_IRQHandler
-        B DMAMUX1_DMA1_CH4_5_IRQHandler
+DMAMUX1_DMA1_CH4_5_6_7_IRQHandler
+        B DMAMUX1_DMA1_CH4_5_6_7_IRQHandler
 
         PUBWEAK ADC1_IRQHandler
         SECTION .text:CODE:NOROOT:REORDER(1)
@@ -231,6 +221,11 @@ TIM3_IRQHandler
         SECTION .text:CODE:NOROOT:REORDER(1)
 TIM14_IRQHandler
         B TIM14_IRQHandler
+		
+        PUBWEAK TIM15_IRQHandler
+        SECTION .text:CODE:NOROOT:REORDER(1)
+TIM15_IRQHandler
+        B TIM15_IRQHandler		
 
         PUBWEAK TIM16_IRQHandler
         SECTION .text:CODE:NOROOT:REORDER(1)
@@ -271,6 +266,11 @@ USART1_IRQHandler
         SECTION .text:CODE:NOROOT:REORDER(1)
 USART2_IRQHandler
         B USART2_IRQHandler
+		
+        PUBWEAK USART3_4_IRQHandler
+        SECTION .text:CODE:NOROOT:REORDER(1)
+USART3_4_IRQHandler
+        B USART3_4_IRQHandler		
 
         END
 
