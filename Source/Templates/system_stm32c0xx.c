@@ -210,7 +210,7 @@ void SystemCoreClockUpdate(void)
       break;
 
 #if defined(RCC_HSI48_SUPPORT)
-    case RCC_CFGR_SW_1:                 /* HSI48 used as system clock */
+    case RCC_CFGR_SWS_1:                 /* HSI48 used as system clock */
       SystemCoreClock = (HSI48_VALUE / sysdiv);
       break;
 #endif /* RCC_HSI48_SUPPORT */
