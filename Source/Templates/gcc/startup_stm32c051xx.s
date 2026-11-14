@@ -161,9 +161,9 @@ g_pfnVectors:
   .word  TIM16_IRQHandler                  /* TIM16                                       */
   .word  TIM17_IRQHandler                  /* TIM17                                       */
   .word  I2C1_IRQHandler                   /* I2C1                                        */
-  .word  I2C2_IRQHandler                   /* I2C1                                        */
+  .word  I2C2_IRQHandler                   /* I2C2                                        */
   .word  SPI1_IRQHandler                   /* SPI1                                        */
-  .word  SPI2_IRQHandler                   /* SPI1                                        */
+  .word  SPI2_IRQHandler                   /* SPI2                                        */
   .word  USART1_IRQHandler                 /* USART1                                      */
   .word  USART2_IRQHandler                 /* USART2                                      */
   .word  0                                 /* reserved                                    */
